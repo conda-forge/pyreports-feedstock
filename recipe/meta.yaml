@@ -1,5 +1,5 @@
 {% set name = "pyreports" %}
-{% set version = "1.6.0" %}
+{% set version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyreports-{{ version }}.tar.gz
-  sha256: 1e4755fcc91ebfe40b12a44bff4b0d6001556416904c125b49e0ec625637a517
+  sha256: 7d159b76d969c71d87310c8f85db8e611e69fa62f7da0e54b165b87b3044e412
 
 build:
   noarch: python
