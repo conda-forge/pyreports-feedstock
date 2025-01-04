@@ -6,28 +6,30 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyreports-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyreports-{{ version }}.tar.gz
   sha256: 7d159b76d969c71d87310c8f85db8e611e69fa62f7da0e54b165b87b3044e412
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - ldap3
     - mysql-connector-python
     - nosqlapi
     - psycopg2
     - pymssql
-    - python >=3.7
+    - python >={{ python_min }}
     - tablib
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - pyreports
 
