@@ -1,0 +1,70 @@
+schema_version: 1
+
+context:
+  name: pyreports
+  version: 1.8.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyreports-${{ version }}.tar.gz
+  sha256: a91416e859f22b77f2e6f26596e226000b1ecef6ea28b8e7cdc5deb0a1c46e43
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - reports=pyreports.cli:main
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+    - setuptools_scm
+    - tomli
+    - wheel
+    - cython
+  run:
+    - ldap3
+    - mysql-connector-python
+    - nosqlapi
+    - psycopg2
+    - pymssql
+    - python >=${{ python_min }}
+    - tablib
+    # from tablib all
+    - odfpy
+    - openpyxl >=2.6.0
+    - pandas
+    - pyyaml
+    - tabulate
+    - xlrd
+    - xlwt
+
+tests:
+  - python:
+      imports:
+        - pyreports
+      python_version: ${{ python_min }}.*
+      # no pipcheck due to using psycopg2 and not binary version
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - reports --help
+
+about:
+  summary: pyreports is a python library that allows you to create complex report from various sources
+  license: GPL-3.0-or-later
+  license_file: LICENSE.md
+  homepage: https://github.com/MatteoGuadrini/pyreports
+  documentation: https://matteoguadrini.github.io/pyreports
+
+extra:
+  recipe-maintainers:
+    - thewchan
