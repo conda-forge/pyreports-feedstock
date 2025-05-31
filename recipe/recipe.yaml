@@ -52,6 +52,7 @@ tests:
         - pyreports
       python_version: ${{ python_min }}.*
       # no pipcheck due to using psycopg2 and not binary version
+      pip_check: false
   - requirements:
       run:
         - python ${{ python_min }}.*
