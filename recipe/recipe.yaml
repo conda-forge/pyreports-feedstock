@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyreports
-  version: 1.8.0
+  version: "1.8.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyreports-${{ version }}.tar.gz
-  sha256: a91416e859f22b77f2e6f26596e226000b1ecef6ea28b8e7cdc5deb0a1c46e43
+  sha256: bb8958f7a7973e62d6d1ce4ef353aa2648b616bbf24c6e0da493426ad7c4edf8
 
 build:
   number: 0
