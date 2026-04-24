@@ -50,7 +50,9 @@ tests:
   - python:
       imports:
         - pyreports
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
       # no pipcheck due to using psycopg2 and not binary version
       pip_check: false
   - requirements:
