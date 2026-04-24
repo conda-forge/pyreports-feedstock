@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyreports
-  version: "1.8.1"
+  version: "1.8.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyreports-${{ version }}.tar.gz
-  sha256: bb8958f7a7973e62d6d1ce4ef353aa2648b616bbf24c6e0da493426ad7c4edf8
+  sha256: 73be3f3da4cc8612290e14a2e02e0bc8cbb89afc28d9d39bd80fce2686ab8073
 
 build:
   number: 0
@@ -50,7 +50,9 @@ tests:
   - python:
       imports:
         - pyreports
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
       # no pipcheck due to using psycopg2 and not binary version
       pip_check: false
   - requirements:
